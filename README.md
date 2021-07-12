@@ -9,3 +9,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     d) Image Translation (moving image left, right, up and down)
     e) Image Rotation (Rotating Image arround an axis)
     f) Image Resize (Resizing image keeping the original aspect ratio of image)
+    g) Image Flipping (Flipping Image horizontally and Vertically)
