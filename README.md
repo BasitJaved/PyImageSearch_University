@@ -11,3 +11,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     f) Image Resize (Resizing image keeping the original aspect ratio of image)
     g) Image Flipping (Flipping Image horizontally and Vertically)
     h) Image Cropping (Cropping ROI from image)
+    i) Image Arithmetic (Using Arithmetic operations on images)
