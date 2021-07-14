@@ -12,3 +12,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     g) Image Flipping (Flipping Image horizontally and Vertically)
     h) Image Cropping (Cropping ROI from image)
     i) Image Arithmetic (Using Arithmetic operations on images)
+    j) Bitwise Operations (and, or, xor, not)
