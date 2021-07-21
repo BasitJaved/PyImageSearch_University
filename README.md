@@ -14,3 +14,8 @@ This repository will contain the work I reproduce during I learn Computer Vision
     i) Image Arithmetic (Using Arithmetic operations on images)
     j) Bitwise Operations (and, or, xor, not)
     k) Masking
+
+# 2- OpenCV 102 - OpenCV Basic Image Processing Operations
+    a) Morphological Operations
+
+
