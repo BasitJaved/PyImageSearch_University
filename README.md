@@ -18,5 +18,9 @@ This repository will contain the work I reproduce during I learn Computer Vision
 # 2- OpenCV 102 - OpenCV Basic Image Processing Operations
     a) Morphological Operations
     b) Smoothing and Blurring (Average, Gaussian, Median and Bilateral Blur)
-
+    c) Color Spaces
+    d) Basic Thresholding
+    e) Adaptive Thresholding
+    f) Convolutions
+    g) Image Gradients
 
