@@ -23,4 +23,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     e) Adaptive Thresholding
     f) Convolutions
     g) Image Gradients
+    h) Edge Detection
+    i) Automatic Edge Detection
 
