@@ -26,3 +26,7 @@ This repository will contain the work I reproduce during I learn Computer Vision
     h) Edge Detection
     i) Automatic Edge Detection
 
+# 3- OpenCV 104 - Histograms
+    a) Image Histograms
+    
+
