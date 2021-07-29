@@ -28,5 +28,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 3- OpenCV 104 - Histograms
     a) Image Histograms
+    b) Histogram and Adaptive Histogram Equalization
     
 
