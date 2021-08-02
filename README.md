@@ -30,5 +30,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Image Histograms
     b) Histogram and Adaptive Histogram Equalization
     c) Histogram Matching
+    d) Gamma Correction
     
 
