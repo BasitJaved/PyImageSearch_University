@@ -32,5 +32,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     c) Histogram Matching
     d) Gamma Correction
     e) Automatic Color Correction
+    f) Detecting Low Contrast Images
     
 
