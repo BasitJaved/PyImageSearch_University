@@ -33,5 +33,7 @@ This repository will contain the work I reproduce during I learn Computer Vision
     d) Gamma Correction
     e) Automatic Color Correction
     f) Detecting Low Contrast Images
-    
+ 
+# 4- Augmented Reality 101 — Fiducials and Markers
+    a) AprilTag Detection
 
