@@ -32,3 +32,22 @@ ARUCO_DICT = {"DICT_4X4_50": cv.aruco.DICT_4X4_50,
               "DICT_APRILTAG_25h9": cv.aruco.DICT_APRILTAG_25h9,
               "DICT_APRILTAG_36h10": cv.aruco.DICT_APRILTAG_36h10,
               "DICT_APRILTAG_36h11": cv.aruco.DICT_APRILTAG_36h11}
+
+# verify that the supplied ArUCo exists and is supported by OpenCv
+if ARUCO_DICT.get(args['type'], None) is None:
+    print(f'ArUCo tag of {args["type"]} is not supported')
+    sys.exit(0)
+
+# Load ArUCo dictionary
+arucodic = cv.aruco.Dictionary_get(ARUCO_DICT[args['type']])
+
+# Allocate memory for output ArUCO tag and draw ArUCo tag on output image
+print(f'Generating ArUCO Tag type {args["type"]} with ID {args["id"]}')
+tag = np.zeros((300, 300, 1), dtype='uint8')
+cv.aruco.drawMarker(arucodic, args['id'], 300, tag, 1)  # Last 1 is for padding it can be more then 1 but not less i.e 0
+
+# Write Generated ArUCO tag on disk and display on screen
+cv.imwrite(args['output'], tag)
+cv.imshow('ArUCo Tag', tag)
+cv.waitKey(0)
+cv.destroyAllWindows()
