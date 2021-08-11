@@ -37,4 +37,5 @@ This repository will contain the work I reproduce during I learn Computer Vision
 # 4- Augmented Reality 101 — Fiducials and Markers
     a) AprilTag Detection
     b) Generating ArUCo Markers with OpenCV
+    c) Detecting ArUCo Markers with OpenCV
 
