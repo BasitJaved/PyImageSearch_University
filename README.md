@@ -41,4 +41,5 @@ This repository will contain the work I reproduce during I learn Computer Vision
     d) Automatically Determining ArUCo Marker Type
     e) Augmented Reality with ArUco Markers
     f) Augmented Reality with ArUco Markers
+    g) Real-time Augmented Reality with OpenCV
 
