@@ -45,3 +45,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 5- Deep Learning 101
     a) What is Deep Learning?
+    b) Image Classification Basics
