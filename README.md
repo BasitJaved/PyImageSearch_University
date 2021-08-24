@@ -48,3 +48,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     b) Image Classification Basics
     c) The Deep Learning Classification Pipeline
     d) Using k-NN to Classify Images
+    e) Parameterized Learning and Neural Networks
