@@ -52,3 +52,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 6 - Deep Learning 102
     a) Understanding and Implementing Gradient Descent
+    b) Stochastic Gradient Descent
