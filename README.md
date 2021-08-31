@@ -54,3 +54,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Understanding and Implementing Gradient Descent
     b) Stochastic Gradient Descent
     c) Gradient Descent Algorithms and Variations
+    d) Regularization Techniques
