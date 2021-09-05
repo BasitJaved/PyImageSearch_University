@@ -59,3 +59,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 # 7 - Deep Learning 103
     a) Introduction to Neural Networks
     b) Implementing the Perceptron Neural Network with Python
+    c) Backpropagation from Scratch with Python
