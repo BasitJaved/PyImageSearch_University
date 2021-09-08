@@ -61,3 +61,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     b) Implementing the Perceptron Neural Network with Python
     c) Backpropagation from Scratch with Python
     d) Implementing Feedforward Neural Networks with Keras and TensorFlow
+    e) The 4 Key Ingredients When Training Any Neural Network
