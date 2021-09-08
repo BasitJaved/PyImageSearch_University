@@ -62,3 +62,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     c) Backpropagation from Scratch with Python
     d) Implementing Feedforward Neural Networks with Keras and TensorFlow
     e) The 4 Key Ingredients When Training Any Neural Network
+    f) Understanding Weight Initialization for Neural Networks
