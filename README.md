@@ -63,3 +63,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     d) Implementing Feedforward Neural Networks with Keras and TensorFlow
     e) The 4 Key Ingredients When Training Any Neural Network
     f) Understanding Weight Initialization for Neural Networks
+
+# 8 - Deep Learning 104
+    a) Convolution and Cross-correlation in Neural Networks
