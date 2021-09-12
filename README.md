@@ -66,3 +66,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 8 - Deep Learning 104
     a) Convolution and Cross-correlation in Neural Networks
+    b) Convolutional Neural Networks (CNNs) and Layer Types
