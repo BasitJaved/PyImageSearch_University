@@ -68,3 +68,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Convolution and Cross-correlation in Neural Networks
     b) Convolutional Neural Networks (CNNs) and Layer Types
     c) Are CNNs Invariant to Translation, Rotation, and Scaling?
+    
+# 9 - Deep Learning 105
+    a) A Gentle Guide to Training your First CNN with Keras and TensorFlow
