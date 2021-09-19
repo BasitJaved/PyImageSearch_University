@@ -71,3 +71,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     
 # 9 - Deep Learning 105
     a) A Gentle Guide to Training your First CNN with Keras and TensorFlow
+    b) Save Your Keras and TensorFlow Model to Disk
