@@ -14,6 +14,7 @@ import argparse
 # Construct the argument parser and parse the argument
 ap = argparse.ArgumentParser()
 ap.add_argument('-d', '--dataset', required=True, help='Path to input dataset')
+ap.add_argument('-m', '--model', required=True, help='Path to output model')
 args = vars(ap.parse_args())
 
 # grab the list of images
@@ -45,6 +46,10 @@ model.compile(loss= 'categorical_crossentropy', optimizer=opt, metrics=['accurac
 # train model
 print('[INFO] training network...')
 H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=32, epochs=100, verbose=1)
+
+# save network to disk
+print('[INFO] Serializing Network...')
+model.save(args['model'])
 
 # evaluate the network
 print('[INFO] evaluating network...')

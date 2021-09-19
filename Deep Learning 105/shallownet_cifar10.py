@@ -5,6 +5,12 @@ from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.datasets import cifar10
 import matplotlib.pyplot as plt
 import numpy as np
+import argparse
+
+# Construct the argument parser and parse the argument
+ap = argparse.ArgumentParser()
+ap.add_argument('-m', '--model', required=True, help='Path to output model')
+args = vars(ap.parse_args())
 
 # Load dataset
 ((trainX, trainY), (testX, testY)) = cifar10.load_data()
@@ -28,11 +34,15 @@ model.compile(loss= 'categorical_crossentropy', optimizer=opt, metrics=['accurac
 print('[INFO] training network...')
 H = model.fit(trainX, trainY, validation_data=(testX, testY), batch_size=32, epochs=50, verbose=1)
 
+# save network to disk
+print('[INFO] Serializing Network...')
+model.save(args['model'])
+
 # evaluate the network
 print('[INFO] evaluating network...')
 predictions = model.predict(testX, batch_size=32)
 print(classification_report(testY.argmax(axis=1), predictions.argmax(axis=1),
-                            target_names=['cat', 'dog', 'panda']))
+                            target_names=labelNames))
 
 # plot training loss and accuracy
 plt.style.use('ggplot')
