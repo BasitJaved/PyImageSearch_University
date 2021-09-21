@@ -74,3 +74,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     b) Save Your Keras and TensorFlow Model to Disk
     c) Load a Trained Keras/TensorFlow Model from Disk
     d) LeNet: Recognizing Handwritten Digits
+    e) MiniVGGNet: Going Deeper with CNNs
