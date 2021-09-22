@@ -75,3 +75,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     c) Load a Trained Keras/TensorFlow Model from Disk
     d) LeNet: Recognizing Handwritten Digits
     e) MiniVGGNet: Going Deeper with CNNs
+    f) Visualizing Network Architectures Using Keras and TensorFlow
