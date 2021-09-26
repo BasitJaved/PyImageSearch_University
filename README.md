@@ -76,3 +76,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     d) LeNet: Recognizing Handwritten Digits
     e) MiniVGGNet: Going Deeper with CNNs
     f) Visualizing Network Architectures Using Keras and TensorFlow
+    g) Pre-trained CNNs for Image Classification
