@@ -77,3 +77,7 @@ This repository will contain the work I reproduce during I learn Computer Vision
     e) MiniVGGNet: Going Deeper with CNNs
     f) Visualizing Network Architectures Using Keras and TensorFlow
     g) Pre-trained CNNs for Image Classification
+
+# 10 - Deep Learning 120
+    a) Regression with Neural Networks
+    
