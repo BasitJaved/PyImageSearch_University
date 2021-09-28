@@ -24,3 +24,24 @@ def load_house_attributes(inputPath):
             df.drop(idxs, inplace=True)
 
     return df
+
+def process_house_attributes(df, train, test):
+
+    # initialize the column names of continuous data
+    continuous = ['bedrooms', 'bathrooms', 'area']
+
+    # performing min-max scaling each continuous feature to range [0, 1]
+    cs = MinMaxScaler()
+    trainContinuous = cs.fit_transform(train[continuous])
+    testContinuous = cs.fit_transform(test[continuous])
+
+    # one-hot encode zip code categorical data
+    zipBinarizer = LabelBinarizer().fit(df['zipcode'])
+    trainCategorical = zipBinarizer.transform(train['zipcode'])
+    testCategorical = zipBinarizer.transform(test['zipcode'])
+
+    # construct training and testing data points by categorical features with continuous features
+    trainX = np.hstack([trainCategorical, trainContinuous])
+    testX = np.hstack([testCategorical, testContinuous])
+
+    return (trainX, testX)
