@@ -13,7 +13,7 @@ args = vars(ap.parse_args())
 
 # construct the path to input txt file that contains information on each house in dataset and then load dataset
 print('[INFO] loading house attributes')
-inputPath = os.path.sep.join([args['dataset'], 'HouseInfo.txt'])
+inputPath = os.path.sep.join([args['dataset'], 'HousesInfo.txt'])
 df = datasets.load_house_attributes(inputPath)
 
 # Construct the training and testing split
@@ -33,8 +33,8 @@ print('[INFO] processing data...')
 # Create mlp and compile model using mean absolute percentage error as loss implying we seek to minimize
 # the absolute percentage difference between our prices
 model = models.create_mlp(trainX.shape[1], regress=True)
-opt = Adam(learning_rate=1e-3/200)
-model.compile(loss = 'mean_absolutepercentage_error', optimizer=opt)
+opt = Adam(learning_rate=1e-3, decay= (1e-3/200))
+model.compile(loss = 'mean_absolute_percentage_error', optimizer=opt)
 
 # training model
 print('[INFO] training model...')
@@ -47,4 +47,14 @@ preds = model.predict(testX)
 # difference and absolute percentage difference
 diff = preds.flatten() - testY
 percentDiff = (diff/testY) * 100
-absPercentDif - np.abs(percentDiff)
+absPercentDiff = np.abs(percentDiff)
+
+# Compute mean and standard Deviation of absolute percentage difference
+mean = np.mean(absPercentDiff)
+std = np.std(absPercentDiff)
+
+# show some stats on our model
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+print(f'[INFO] Avg. House Price: {locale.currency(df["price"].mean(),grouping=True)}, '
+      f'std House Price: {locale.currency(df["price"].mean(), grouping=True)}')
+print(f'mean: {mean}, std: {std}')
