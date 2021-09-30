@@ -45,3 +45,36 @@ def process_house_attributes(df, train, test):
     testX = np.hstack([testCategorical, testContinuous])
 
     return (trainX, testX)
+
+def load_house_images(df, inputPath):
+    # initialize our images array
+    images = []
+
+    # loop over the indexes of houses
+    for i in df.index.values:
+        # find the four images for the house and sort file paths, ensuring four are always in same order
+        basePath = os.path.sep.join([inputPath, '{}_*'.format(i+1)])
+        housePaths = sorted(list(glob.glob(basePath)))
+
+        # initialize our list of input images along with output images after combining 4 input images
+        inputImages = []
+        outputImages = np.zeros((64, 64, 3), dtype='uint8')
+
+        # loop over the input house path
+        for housePath in housePaths:
+            # load the input image, resize it to 32x32 and then update list of input images
+            image = cv.imread(housePath)
+            image = cv.resize(image, (32, 32))
+            inputImages.append(image)
+
+        # tile the four images in output image such that first image goes in top-right corner, second in the
+        # top left corner, third in bottom right corner and forth in bottom left corner
+        outputImages[0:32, 0:32] = inputImages[0]
+        outputImages[0:32, 32:64] = inputImages[1]
+        outputImages[32:64, 32:64] = inputImages[2]
+        outputImages[32:64, 0:32] = inputImages[3]
+
+        # add the tiled image to our set of images the network will be trained on
+        images.append(outputImages)
+
+    return np.array(images)
