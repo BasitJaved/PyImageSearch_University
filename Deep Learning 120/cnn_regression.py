@@ -20,7 +20,6 @@ df = datasets.load_house_attributes(inputPath)
 print('[INFO] loading house images...')
 images = datasets.load_house_images(df, args['dataset'])
 images = images/ 255.0
-print(images.shape)
 
 # Construct the training and testing split
 print('[INFO] constructing Training/Testing splits...')
@@ -35,7 +34,7 @@ testY = testAttrX['price']/maxPrice
 # Create CNN and compile model using mean absolute percentage error as loss implying we seek to minimize
 # the absolute percentage difference between our prices
 model = models.create_cnn(64, 64, 3, regress=True)
-opt = Adam(learning_rate=1e-3, decay= (1e-3/200))
+opt = Adam(learning_rate=1e-3, decay= 1e-3/200)
 model.compile(loss = 'mean_absolute_percentage_error', optimizer=opt)
 
 # training model
@@ -59,5 +58,5 @@ std = np.std(absPercentDiff)
 # show some stats on our model
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 print(f'[INFO] Avg. House Price: {locale.currency(df["price"].mean(),grouping=True)}, '
-      f'std House Price: {locale.currency(df["price"].mean(), grouping=True)}')
+      f'std House Price: {locale.currency(df["price"].std(), grouping=True)}')
 print(f'mean: {mean}, std: {std}')
