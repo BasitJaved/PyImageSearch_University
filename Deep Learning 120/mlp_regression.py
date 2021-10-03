@@ -56,5 +56,5 @@ std = np.std(absPercentDiff)
 # show some stats on our model
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 print(f'[INFO] Avg. House Price: {locale.currency(df["price"].mean(),grouping=True)}, '
-      f'std House Price: {locale.currency(df["price"].mean(), grouping=True)}')
+      f'std House Price: {locale.currency(df["price"].std(), grouping=True)}')
 print(f'mean: {mean}, std: {std}')
