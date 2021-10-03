@@ -80,4 +80,5 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 10 - Deep Learning 120
     a) Regression with Neural Networks
+    b) Regression with CNNs
     
