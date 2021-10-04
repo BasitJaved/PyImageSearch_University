@@ -82,4 +82,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Regression with Neural Networks
     b) Regression with CNNs
     c) Combining Categorical, Numerical, and Image Data Into a Single Neural Network
-    
+
+# 11 - Deep Learning 125
+    a) A Gentle Introduction to tf.data with TensorFlow
