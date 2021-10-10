@@ -85,3 +85,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 11 - Deep Learning 125
     a) A Gentle Introduction to tf.data with TensorFlow
+    b) Data Pipelines with tf.data and TensorFlow
