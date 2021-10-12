@@ -92,3 +92,18 @@ print('[INFO] visualizing first batch of dataset...')
 title = 'With Data augmentation {}'.format('applied ({})'.format(args['type']) if args['augment'] else 'not applied')
 fig = plt.figure(figsize=(BS, BS))
 fig.suptitle(title)
+
+# loop over the batch size
+for i in range(0, BS):
+    # grab the image and label from the batch
+    (image, label) = (batch[0][i], batch[1][i])
+
+    # Create a sub plot and plot image and label
+    ax = plt.subplot(2, 4, i+1)
+    plt.imshow(image.numpy())
+    plt.title(label.numpy().decode('UTF-8'))
+    plt.axis('off')
+
+# show the plot
+plt.tight_layout()
+plt.show()
