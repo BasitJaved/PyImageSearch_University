@@ -87,3 +87,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) A Gentle Introduction to tf.data with TensorFlow
     b) Data Pipelines with tf.data and TensorFlow
     c) Data Augmentation with tf.data and TensorFlow
+    
+# 12 - Deep Learning 130
+    a) Introduction to Hyperparameter Tuning
