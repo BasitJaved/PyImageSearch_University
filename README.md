@@ -90,3 +90,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     
 # 12 - Deep Learning 130
     a) Introduction to Hyperparameter Tuning
+    b) Hyperparameter Tuning for Computer Vision Projects
