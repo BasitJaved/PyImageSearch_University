@@ -19,7 +19,7 @@ def get_mlp_model(hidden_layer_one=784, hidden_layer_two=256, dropout=0.2, learn
     model.add(Dense(10, activation='softmax'))
 
     # Compile the model
-    model.compile(optimizer=Adam(learning_rate=learning_rate,
-                                 loss='sparse_categorical_crossentropy', metrics=['accuracy']))
+    model.compile(optimizer=Adam(learning_rate=learning_rate),
+                                 loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     return model
