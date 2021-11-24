@@ -92,3 +92,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Introduction to Hyperparameter Tuning
     b) Hyperparameter Tuning for Computer Vision Projects
     c) Using scikit-learn to Tune Deep Learning Model Hyperparameters
+    d) Easy Hyperparameter Tuning with Keras Tuner
