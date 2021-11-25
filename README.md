@@ -93,3 +93,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     b) Hyperparameter Tuning for Computer Vision Projects
     c) Using scikit-learn to Tune Deep Learning Model Hyperparameters
     d) Easy Hyperparameter Tuning with Keras Tuner
+
+# 13 - Pytorch 101
+    a) What is PyTorch?
