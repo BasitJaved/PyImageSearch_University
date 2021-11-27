@@ -96,3 +96,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 
 # 13 - Pytorch 101
     a) What is PyTorch?
+    b) Your First Neural Network with PyTorch
