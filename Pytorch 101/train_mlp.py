@@ -45,7 +45,7 @@ trainTemplate = 'epoch: {}, test loss: {}, test accuracy: {}'
 # loop through the epochs
 for epoch in range(0, epochs):
     # initialize tracker variables and set our model to trainable
-    print('[INFO] epoch: {}...')
+    print(f'[INFO] epoch: {epoch}...')
     trainLoss = 0
     trainAcc = 0
     samples = 0
