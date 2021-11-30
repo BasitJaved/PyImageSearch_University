@@ -52,8 +52,8 @@ val_data_loader = DataLoader(val_data, batch_size=batch_size)
 test_data_loader = DataLoader(test_data, batch_size=batch_size)
 
 # calculate steps per epochs for training and validation set
-train_steps = len(train_data_loader)//batch_size
-val_steps = len(val_data_loader)//batch_size
+train_steps = len(train_data_loader.dataset)//batch_size
+val_steps = len(val_data_loader.dataset)//batch_size
 
 # initialize LeNet Model
 print('[INFO] Initializing LeNet Model...')
@@ -164,7 +164,7 @@ with torch.no_grad():
 
         # make predictions and add them to list
         pred = model(x)
-        pred.extend(pred.argmax(axis=1).cpu().numpy())
+        preds.extend(pred.argmax(axis=1).cpu().numpy())
 
 # generate a clssification report
 print(classification_report(test_data.targets.cpu().numpy(), np.array(preds), target_names=test_data.classes))
