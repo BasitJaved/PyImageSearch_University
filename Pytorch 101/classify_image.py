@@ -61,3 +61,13 @@ print(f'[INFO] classifying image with {args["model"]} ...')
 logits = model(image)
 probabilities = torch.nn.Softmax(dim=-1)(logits)
 sorted_probabilities = torch.argsort(probabilities, dim=-1, descending=True)
+
+# loop over the predictions and display the rank-5 predictions and corresponding probabilities to terminal
+for (i, idx) in enumerate(sorted_probabilities[0, :5]):
+    print(f"{i} . {imagenet_labels[idx.item()].strip()}: {probabilities[0, idx.item()]*100}%")
+
+# draw predictions on image and show image
+(label, prob) = (imagenet_labels[probabilities.argmax().item()], probabilities.max().item())
+cv.putText(orig, f'Label: {label.strip()}, {prob*100}%', (10, 30), cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
+cv.imshow('Classification', orig)
+cv.waitKey(0)
