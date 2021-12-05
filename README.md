@@ -99,3 +99,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     b) Your First Neural Network with PyTorch
     c) Training Your First CNN with PyTorch
     d) Image Classification with Pre-Trained Networks and PyTorch
+    e) Object Detection with Pre-Trained Networks and PyTorch
