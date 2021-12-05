@@ -16,7 +16,7 @@ ap.add_argument('-c', '--confidence', type=float, default=0.5, help='Minimum pro
 args = vars(ap.parse_args())
 
 # select the device we will be using to run the model
-device = torch.cuda('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # load a list of categories in coco dataset and then generate a set of bounding box colors for each class
 classes = pickle.loads(open(args['labels'], 'rb').read())
@@ -24,13 +24,13 @@ colors = np.random.uniform(0, 255, size=(len(classes), 3))
 
 # initialize a dictionary containing model name and its corresponding torchvision function call
 models = {
-    'frcnn-resnet' : detection.fasterrcnn_resnet50_fpn,
-    'frcnn-mobilenet' : detection.fasterrcnn_mobilenet_v3_large_320_fpn,
+    'frcnn-resnet': detection.fasterrcnn_resnet50_fpn,
+    'frcnn-mobilenet': detection.fasterrcnn_mobilenet_v3_large_320_fpn,
     'retinanet': detection.retinanet_resnet50_fpn
 }
 
 # load model and set it to evaluation mode
-model = models[args['model']](pretrained = True, progress=True, num_classes=len(classes),
+model = models[args['model']](pretrained=True, progress=True, num_classes=len(classes),
                               pretrained_backbone=True).to(device)
 model.eval()
 
@@ -50,6 +50,7 @@ image = torch.FloatTensor(image)
 # send the input to device and pass it through the network to get the detections and predictions
 image = image.to(device)
 detections = model(image)[0]
+print(detections)
 
 #  loop over the detections
 for i in range(0, len(detections['boxes'])):
@@ -64,7 +65,8 @@ for i in range(0, len(detections['boxes'])):
         (startX, startY, endX, endY) = box.astype('int')
 
         # display predictions to our terminal
-        print(f'[INFO] {classes[idx]}: {confidence*100}')
+        label = f'{classes[idx]}: {confidence*100:.2f}%'
+        print(f'[INFO] {label}')
 
         # draw bounding box and label on image
         cv.rectangle(orig, (startX, startY), (endX, endY), colors[idx], 2)
