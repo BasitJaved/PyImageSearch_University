@@ -100,3 +100,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     c) Training Your First CNN with PyTorch
     d) Image Classification with Pre-Trained Networks and PyTorch
     e) Object Detection with Pre-Trained Networks and PyTorch
+
+# 14 - Pytorch 102
+    a) DataLoader for Image Data
