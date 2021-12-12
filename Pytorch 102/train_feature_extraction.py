@@ -39,3 +39,58 @@ model = resnet50(pretrained=True)
 for param in model.parameters():
     param.requires_grad = False
 
+# append a new classification top to our feature extractor and pop it on to the current device
+model_output_feats = model.fc.in_features
+model.fc = nn.Linear(model_output_feats, len(train_ds.classes))
+model = model.to(config.device)
+
+# initialize loss function and classifier
+loss_func = nn.CrossEntropyLoss()
+opt = torch.optim.Adam(model.fc.parameters(), lr = config.lr)
+
+# calculate steps per epoch for training and validation set
+train_step = len(train_ds//config.feature_extraction_batch_size)
+val_step = len(val_ds//config.feature_extraction_batch_size)
+
+# initialize a dictionary to store training history
+H = {'training_loss': [],
+     'train_acc' : [],
+     'val_loss' : [],
+     'val_acc' : []}
+
+# loop over epochs
+print('[INFO] training the network ...')
+start_time = time.time()
+for e in tqdm(range(config.epochs)):
+
+    # set model to training mode
+    model.train()
+
+    # initialize total training and validation loss
+    total_train_loss = 0
+    total_val_loss = 0
+
+    # initialize number of correct predictions in training and validation set
+    train_correct = 0
+    val_correct = 0
+
+    # loop over the training set
+    for (i, (x, y)) in enumerate(train_loader):
+        # send inout to device
+        (x, y) = (x.to(config.device), y.to(config.device))
+
+        # perform forward pass and calculate training loss
+        pred = model(x)
+        loss = loss_func(pred, y)
+
+        # calculate the gradient
+        loss.backward()
+
+        # check if we are updating model parameters if so update them and zero out previously accumulated gradient
+        if (i + 2) % 2 == 0:
+            opt.step()
+            opt.zero_grad()
+
+        # add the loss to total training loss so far and calculate total number of correct predictions
+        total_train_loss +=loss
+        train_correct +=(pred.argmax(1) == y).type(torch.float).sum().item()
