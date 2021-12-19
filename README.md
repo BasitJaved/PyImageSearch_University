@@ -104,3 +104,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 # 14 - Pytorch 102
     a) DataLoader for Image Data
     b) PyTorch: Transfer Learning and Image Classification
+    c) Introduction to Distributed Training in PyTorch
