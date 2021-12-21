@@ -94,3 +94,65 @@ for epochs in range(num_epochs):
 
     # show epoch information and compute number of batches per epochs
     print(f'[INFO] starting epoch {epochs+1} of {num_epochs}')
+
+    # initiate current epoch loss for generator and discriminator
+    epoch_loss_g = 0
+    epoch_loss_d = 0
+
+    for x in data_loader:
+        # zero out discriminator gradient
+        dis.zero_grad()
+
+        # grab the images and send them to device
+        images = x[0]
+        images = images.to(device)
+
+        # get the batch size and create a labels tensor
+        bs = images.size(0)
+        labels = torch.full((bs,), real_label, dtype=torch.float, device=device)
+
+        # forward pass through discriminator
+        output = dis(image).view(-1)
+
+        # calculate loss on all-real batch
+        error_real = criterion(output, labels)
+
+        # calculate gradient by performing a backward pass
+        error_real.backward()
+
+        # randomly generate noise for the generator to predict on
+        noise = torch.randn(bs, 100, 1, 1, device=device)
+
+        # generate a fake image batch using generator
+        fake = gen(noise)
+        labels.fill_(fake_label)
+
+        # perform a forward pass through discriminator using fake data
+        output = dis(fake.detach()).view(-1)
+        error_fake = criterion(output, labels)
+
+        # calculate gradient by performing a backward pass
+        error_fake.backward()
+
+        # compute the error for discriminator and update it
+        error_d = error_real + error_fake
+        dis_optim.step()
+
+        # set all the generator gradient to zero
+        gen.zero_grad()
+
+        # update the labels as fake labels are real for generator and perform a forward pass of fake data through
+        # discriminator
+        labels.fill_(real_label)
+        output = dis(fake).view(-1)
+
+        # calculate generator's loss based on output from discriminator and calculate gradients for generator
+        error_g = criterion(output, labels)
+        error_g.backward()
+
+        # update the generator
+        gen_optim.step()
+
+        # add the current iteration loss of discriminator and generator
+        epoch_loss_d += error_d
+        epoch_loss_g += error_g
