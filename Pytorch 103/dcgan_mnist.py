@@ -52,8 +52,8 @@ data_transforms = transforms.Compose([
 
 # load MNIST dataset and stack training and testing data so we have additional training data
 print('[INFO] loading MNIST dataset...')
-train_data = MNIST(root='data', train=True, download=True, transforms=data_transforms)
-test_data = MNIST(root='data', train=False, download=True, transforms=data_transforms)
+train_data = MNIST(root='data', train=True, download=True, transform=data_transforms)
+test_data = MNIST(root='data', train=False, download=True, transform=data_transforms)
 data = torch.utils.data.ConcatDataset((train_data, test_data))
 
 # initialize our data loader
@@ -112,7 +112,7 @@ for epochs in range(num_epochs):
         labels = torch.full((bs,), real_label, dtype=torch.float, device=device)
 
         # forward pass through discriminator
-        output = dis(image).view(-1)
+        output = dis(images).view(-1)
 
         # calculate loss on all-real batch
         error_real = criterion(output, labels)
@@ -156,3 +156,25 @@ for epochs in range(num_epochs):
         # add the current iteration loss of discriminator and generator
         epoch_loss_d += error_d
         epoch_loss_g += error_g
+
+        # display training information to disk
+        print(f'[INFO] Generator loss: {epoch_loss_g/steps_per_epochs:.4f}, '
+              f'Discriminator loss: {epoch_loss_d/steps_per_epochs:.4f}')
+
+        # check to see if we should visualize the output of generator model on our benchmark data
+        if (epochs+1)%2 == 0:
+            # Set the generator in evaluation mode, make prediction on benchmark noise, scale it back to
+            # range [0, 255], and generate the montage
+            gen.eval()
+            images = gen(benchmark_noise)
+            images = images.detach().cpu().numpy().transpose((0,2,3,1))
+            images = ((images*127.5)+127.5).astype('uint8')
+            images = np.repeat(images, 3, axis=-1)
+            vis = build_montages(images, (28, 28), (16, 16))[0]
+
+            # build the output path and write the visualization to disk
+            p = os.path.join(args['output'], f'output_{str(epochs+1).zfill(4)}.png')
+            cv.imwrite(p, vis)
+
+            # set the generator to training mode
+            gen.train()
