@@ -105,3 +105,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) DataLoader for Image Data
     b) PyTorch: Transfer Learning and Image Classification
     c) Introduction to Distributed Training in PyTorch
+    
+# 15 - Pytorch 103
+    a) Training a DCGAN in PyTorch
