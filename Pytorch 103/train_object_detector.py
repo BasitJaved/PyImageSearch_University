@@ -136,3 +136,105 @@ H = {'total_training_loss': [],
      'val_class_acc': []
      }
 
+# loop over the epochs
+print('[INFO] training the network...')
+start_time = time.time()
+for e in tqdm(range(config.num_epochs)):
+    # set model in training mode
+    object_detect.train()
+
+    # initialize the total training and validation loss
+    total_train_loss = 0
+    total_val_loss = 0
+
+    # initialize the number of correct predictions in training and validation step
+    train_correct = 0
+    val_correct = 0
+
+    # loop over the training set
+    for (images, labels, bboxes) in train_loader:
+        # send input to device
+        (images, labels, bboxes) = (images.to(config.device), labels.to(config.device), bboxes.to(config.device))
+
+        # perform a forward pass and calculate training loss
+        predictions = object_detect(images)
+        bbox_loss = bbox_loss_function(predictions[0], bboxes)
+        class_loss = class_loss_function(predictions[0], labels)
+        total_loss = (config.bbox * bbox_loss) + (config.labels * class_loss)
+
+        # zero out the gradients, perform the backpropagation step, and update weights
+        opt.zero_grad()
+        total_loss.backward()
+        opt.step()
+
+        # add the loss to total training loss so far and calculate number of correct predictions
+        total_train_loss += total_loss
+        train_correct += (predictions[1].argmax(1) == labels).type(torch.float).sum().item()
+
+    #switch off autograd
+    with torch.no_grad():
+        # set the model in evaluation mode
+        object_detect.eval()
+
+        # loop over the validation set
+        for (images, labels, bboxes) in test_loader:
+            # set the input to device
+            (images, labels, bboxes) = (images.to(config.device), labels.to(config.device), bboxes.to(config.device))
+
+            # make the predictions and calculate validation loss
+            predictions = object_detect(images)
+            bbox_loss = bbox_loss_function(predictions[0], bboxes)
+            class_loss = class_loss_function(predictions[1], labels)
+            total_loss = (config.bbox * bbox_loss) + (config.labels * class_loss)
+            total_val_loss += total_loss
+
+            # calculate number of correct predictions
+            val_correct += (predictions[1].argmax(1) == labels).type(torch.float).sum().item()
+
+    # calculate average training and validation loss
+    avg_train_loss = total_train_loss / train_steps
+    avg_val_loss = total_val_loss / val_steps
+
+    # calculate the training and validation accuracy
+    train_correct = train_correct / len(train_ds)
+    val_correct = val_correct / len(test_ds)
+
+    # update our training history
+    H['total_train_loss'].append(avg_train_loss.cpu().detach().numpy())
+    H['train_class_acc'].append(train_correct)
+    H['total_val_loss'].append(avg_val_loss.cpu().detach().numpy())
+    H['val_class_acc'].append(val_correct)
+
+    # print model training and validation information
+    print(f'[INFO] Epoch: {e+1}/{config.num_epochs}')
+    print(f'Train loss: {avg_train_loss:.6f}, Train accuracy: {train_correct:.4f}')
+    print(f'Val loss: {avg_val_loss:.6f}, Val accuracy: {val_correct:.4f}')
+
+end_time = time.time()
+print(f'[INFO] total time taken to train the model: {end_time-start_time:.2f}s')
+
+# serialize the model to disk
+print('[INFO] saving object detector model...')
+torch.save(object_detect, config.model_path)
+
+# serialize label encoder to disk
+print('[INFO] saving label encoder...')
+f = open(config.le_path, 'wb')
+f.write(pickle.dumps(le))
+f.close()
+
+# plot the training loss and accuracy
+plt.style.use('ggplot')
+plt.figure()
+plt.plot(H['total_train_loss'], label='total_train_loss')
+plt.plot(H['train_class_acc'], label='train_class_acc')
+plt.plot(H['total_val_loss'], label='total_val_loss')
+plt.plot(H['val_class_acc'], label='val_class_acc')
+plt.title('Total Training loss and Classification Accuracy on Dataset')
+plt.xlabel('Epoch #')
+plt.ylabel('Loss/Accuracy')
+plt.legend(loc='lower left')
+
+# Saving training plot
+plot_path = os.path.sep.join([config.plots_path, 'training.png'])
+plt.savefig(plot_path)
