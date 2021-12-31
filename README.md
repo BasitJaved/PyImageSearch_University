@@ -108,3 +108,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     
 # 15 - Pytorch 103
     a) Training a DCGAN in PyTorch
+    b) Training an object detector from scratch in PyTorch
