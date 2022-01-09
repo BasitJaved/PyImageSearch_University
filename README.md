@@ -110,3 +110,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Training a DCGAN in PyTorch
     b) Training an object detector from scratch in PyTorch
     c) U-Net: Training Image Segmentation Models in PyTorch
+    
+# 16 -  Siamese Networks 101
+    a) Building Image Pairs for Siamese Networks
