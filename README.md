@@ -113,3 +113,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     
 # 16 -  Siamese Networks 101
     a) Building Image Pairs for Siamese Networks
+    b) Implementing Your First Siamese Network with Keras and TensorFlow
