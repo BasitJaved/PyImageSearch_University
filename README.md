@@ -115,4 +115,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Building Image Pairs for Siamese Networks
     b) Implementing Your First Siamese Network with Keras and TensorFlow
     c) Comparing Images for Similarity with Siamese Networks
-    d) Improving Accuracy with Contrastlive Loss
+    d) Improving Accuracy with Contrastive Loss
