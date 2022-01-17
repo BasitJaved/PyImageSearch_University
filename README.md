@@ -116,3 +116,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     b) Implementing Your First Siamese Network with Keras and TensorFlow
     c) Comparing Images for Similarity with Siamese Networks
     d) Improving Accuracy with Contrastive Loss
+    
+# 17 -  Image Adversaries 101
+    a) Adversarial Images and Attacks with Keras and TensorFlow
