@@ -120,3 +120,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 # 17 -  Image Adversaries 101
     a) Adversarial Images and Attacks with Keras and TensorFlow
     b) Targeted Adversarial Attacks with Keras and TensorFlow
+    c) Adversarial Attacks with FGSM (Fast Gradient Signed Method
