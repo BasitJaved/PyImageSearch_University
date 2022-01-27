@@ -123,3 +123,6 @@ This repository will contain the work I reproduce during I learn Computer Vision
     c) Adversarial Attacks with FGSM (Fast Gradient Signed Method
     d) Defending Against Adversarial Attacks
     e) Mixing Normal Images and Adversarial Images when Training CNNs
+    
+# 18 -  Autoencoders 101
+    a) Autoencoders with Keras and TensorFlow
