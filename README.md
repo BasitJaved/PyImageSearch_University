@@ -126,3 +126,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     
 # 18 -  Autoencoders 101
     a) Autoencoders with Keras and TensorFlow
+    b) Denoising Autoencoders with Keras and TensorFlow
