@@ -128,3 +128,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Autoencoders with Keras and TensorFlow
     b) Denoising Autoencoders with Keras and TensorFlow
     c) Anomaly Detection with Autoencoders
+    d) Autoencoders for Content-based Image Retrieval (CBIR)
