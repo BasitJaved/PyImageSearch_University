@@ -133,3 +133,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
 # 19 -  Object Detection 101
     a) Shape Detection with OpenCV
     b) Template Matching with OpenCV
+    c) Multi-template Matching
