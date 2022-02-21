@@ -134,3 +134,4 @@ This repository will contain the work I reproduce during I learn Computer Vision
     a) Shape Detection with OpenCV
     b) Template Matching with OpenCV
     c) Multi-template Matching
+    d) Multi-scale Template Matching
